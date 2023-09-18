@@ -1,20 +1,18 @@
 package utility;
 
+import org.openqa.selenium.WebDriver;
+import utility.*;
+
 import locators.menu_Locators;
 
-public class homePage_actions extends config {
-
+public class homePage_actions {
+	WebDriver driver;
+	config config = new config();
+	
 	menu_Locators menu_Locators = new menu_Locators();
 
-	public void homePageVerification() {
-
-		String currentUrl = driver.getCurrentUrl();
-		if (currentUrl.equals(properties.getProperty("URL"))) {
-			System.out.println("User is on Home Page");
-		} else {
-			System.out.println("User is not on Home Page");
-		}
-
+	public void launchBrowser() {
+		driver = config.launchingChromeBrowser();
 	}
 
 	public void verifyingTopLevelMenus() {
@@ -36,6 +34,11 @@ public class homePage_actions extends config {
 			System.out.println("Why Tendable? menu is accessible");
 		}
 
+	}
+	
+	public void closeBrowser()
+	{
+		config.closeBrowser();
 	}
 
 }
