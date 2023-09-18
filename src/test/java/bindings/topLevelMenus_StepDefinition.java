@@ -29,6 +29,26 @@ public class topLevelMenus_StepDefinition {
 		homePage_actions.verifyingRequestDemoBtnActiveOnAllPages();
 	}
 	
+	@Given("^User is navigated to the Home Page and navigate to Contact Us page.$")
+	public void navigateToContactUS() throws Throwable {
+		homePage_actions.verifyingRequestDemo();
+	}
+	
+	@Then("^Clicks on Marketing tab$")
+	public void navigateMarketingTab() throws Throwable {
+		homePage_actions.verifyingRequestDemo();
+	}
+	
+	@And("^Complete the form- excluding the 'Message' field$")
+	public void fillForm() throws Throwable {
+		homePage_actions.verifyingRequestDemo();
+	}
+	
+	@And("^Ensure the error message$")
+	public void verifyingErrorMessage() throws Throwable {
+		homePage_actions.verifyingRequestDemo();
+	}
+	
 	@Then("^Close the browser$")
 	public void then() throws Throwable {
 

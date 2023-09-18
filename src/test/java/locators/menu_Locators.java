@@ -10,7 +10,16 @@ public class menu_Locators {
 	
 	public By requestADemo = By.linkText("Request a Demo");
 	public By contactUs = By.linkText("Contact Us");
-	public By marketing = By.xpath("//div[@class='w-full mb-8 relative bg-aqua-100 rounded-6xl md:rounded-10xl p-20']");
+	public By marketing = By.linkText("Contact");
 	
-
+	public By fullName = By.id("form-input-fullName");
+	public By organisationName = By.id("form-input-organisationName");
+	public By phoneNumber = By.id("form-input-cellPhone");
+	public By email = By.id("form-input-email");
+	
+	public By agreeRadioButton = By.id("form-input-consentAgreed-0");
+	public By submitButton = By.className("button");
+	
+	public By errorMessage = By.xpath("//li[contains(text(),'This field is required')]");
+	
 }
