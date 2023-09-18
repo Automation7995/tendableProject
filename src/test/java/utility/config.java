@@ -6,11 +6,13 @@ import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -27,37 +29,31 @@ public class config {
 		String browser = properties.getProperty("browser");
 
 		if (browser.equals("chrome")) {
+
 			try {
 				WebDriverManager.chromedriver().setup();
-				driver = new ChromeDriver();
+				
+				ChromeOptions chromeOptions = new ChromeOptions();
+				chromeOptions.setCapability(CapabilityType.PAGE_LOAD_STRATEGY, PageLoadStrategy.NONE);
+				
+				driver = new ChromeDriver(chromeOptions);
 				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeouts));
-				driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 				driver.manage().window().maximize();
 				driver.get(properties.getProperty("URL"));
 				System.out.println("Starting Web Browser.........");
-			} catch (TimeoutException e) {
-				// TODO Auto-generated catch block
-				((JavascriptExecutor) driver).executeScript("window.stop();");
 			} catch (Exception e) {
-				System.out.println("Website loading infinitely");
+				// TODO Auto-generated catch block
+				System.err.println(e);
 			}
 		}
 
 		if (browser.equals("firefox")) {
-			try {
-				WebDriverManager.firefoxdriver().setup();
-				driver = new FirefoxDriver();
-				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeouts));
-				driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-				driver.manage().window().maximize();
-				driver.get(properties.getProperty("URL"));
-				System.out.println("Starting Web Browser.........");
-			} catch (TimeoutException e) {
-				// TODO Auto-generated catch block
-				((JavascriptExecutor) driver).executeScript("window.stop();");
-			} catch (Exception e) {
-				System.out.println("Website loading infinitely");
-			}
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeouts));
+			driver.manage().window().maximize();
+			driver.get(properties.getProperty("URL"));
+			System.out.println("Starting Web Browser.........");
 		}
 		return driver;
 

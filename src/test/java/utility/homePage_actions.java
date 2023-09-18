@@ -2,11 +2,13 @@ package utility;
 
 import java.time.Duration;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import org.junit.Assert;
 import locators.menu_Locators;
 
 public class homePage_actions {
@@ -21,22 +23,27 @@ public class homePage_actions {
 
 	public void verifyingTopLevelMenus() {
 
-		Boolean ourStoryEnable = driver.findElement(menu_Locators.ourStory).isEnabled();
+		try {
+			Boolean ourStoryEnable = driver.findElement(menu_Locators.ourStory).isEnabled();
 
-		if (ourStoryEnable == true) {
-			System.out.println("Our Story menu is accessible");
-		}
+			if (ourStoryEnable == true) {
+				System.out.println("Our Story menu is accessible");
+			}
 
-		Boolean ourSolutionEnable = driver.findElement(menu_Locators.ourSolution).isEnabled();
+			Boolean ourSolutionEnable = driver.findElement(menu_Locators.ourSolution).isEnabled();
 
-		if (ourSolutionEnable == true) {
-			System.out.println("Our Solution menu is accessible");
-		}
+			if (ourSolutionEnable == true) {
+				System.out.println("Our Solution menu is accessible");
+			}
 
-		Boolean whyTendableEnable = driver.findElement(menu_Locators.whyTendable).isEnabled();
+			Boolean whyTendableEnable = driver.findElement(menu_Locators.whyTendable).isEnabled();
 
-		if (whyTendableEnable == true) {
-			System.out.println("Why Tendable? menu is accessible");
+			if (whyTendableEnable == true) {
+				System.out.println("Why Tendable? menu is accessible");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.err.println(e);
 		}
 
 	}
@@ -102,7 +109,7 @@ public class homePage_actions {
 
 	}
 
-	public void fillForm() {
+	public void fillForm() throws InterruptedException {
 		WebElement Element;
 		long timeouts = Long.parseLong(config.properties.getProperty("Wait"));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeouts));
@@ -110,35 +117,37 @@ public class homePage_actions {
 		Element = wait.until(ExpectedConditions.visibilityOfElementLocated(menu_Locators.fullName));
 		Element.click();
 		Element.sendKeys(config.properties.getProperty("name"));
+		Thread.sleep(1000);
 
 		Element = wait.until(ExpectedConditions.visibilityOfElementLocated(menu_Locators.organisationName));
 		Element.click();
 		Element.sendKeys(config.properties.getProperty("organizationName"));
+		Thread.sleep(1000);
 
 		Element = wait.until(ExpectedConditions.visibilityOfElementLocated(menu_Locators.phoneNumber));
 		Element.click();
 		Element.sendKeys(config.properties.getProperty("phoneNumber"));
+		Thread.sleep(1000);
 
 		Element = wait.until(ExpectedConditions.visibilityOfElementLocated(menu_Locators.email));
 		Element.click();
 		Element.sendKeys(config.properties.getProperty("email"));
+		Thread.sleep(1000);
 
 		Element = wait.until(ExpectedConditions.visibilityOfElementLocated(menu_Locators.agreeRadioButton));
 		Element.click();
+		Thread.sleep(1000);
 
 		Element = wait.until(ExpectedConditions.visibilityOfElementLocated(menu_Locators.submitButton));
 		Element.click();
 	}
 
-	public void verifyErrorMessage() {
+	public void verifyErrorMessage() throws InterruptedException {
 
-		Boolean errorMessage = driver.findElement(menu_Locators.errorMessage).isDisplayed();
+		WebElement errorMessageElement = driver.findElement(menu_Locators.errorMessage); // Adjust the locator as needed
 
-		if (errorMessage == true) {
-			System.out.println("Error message is visible");
-		} else {
-			System.out.println("Error message is not visible");
-		}
+		// Assert that the error message element is displayed
+		Assert.assertTrue("Error message is not displayed", errorMessageElement.isDisplayed());
 	}
 
 	public void closeBrowser() {

@@ -31,22 +31,22 @@ public class topLevelMenus_StepDefinition {
 	
 	@Given("^User is navigated to the Home Page and navigate to Contact Us page.$")
 	public void navigateToContactUS() throws Throwable {
-		homePage_actions.verifyingRequestDemo();
+		homePage_actions.clickOnContactUs();
 	}
 	
 	@Then("^Clicks on Marketing tab$")
 	public void navigateMarketingTab() throws Throwable {
-		homePage_actions.verifyingRequestDemo();
+		homePage_actions.clickOnMarketingTab();
 	}
 	
 	@And("^Complete the form- excluding the 'Message' field$")
 	public void fillForm() throws Throwable {
-		homePage_actions.verifyingRequestDemo();
+		homePage_actions.fillForm();
 	}
 	
 	@And("^Ensure the error message$")
 	public void verifyingErrorMessage() throws Throwable {
-		homePage_actions.verifyingRequestDemo();
+		homePage_actions.verifyErrorMessage();
 	}
 	
 	@Then("^Close the browser$")

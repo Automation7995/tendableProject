@@ -10,7 +10,7 @@ public class menu_Locators {
 	
 	public By requestADemo = By.linkText("Request a Demo");
 	public By contactUs = By.linkText("Contact Us");
-	public By marketing = By.linkText("Contact");
+	public By marketing = By.xpath("//button[@class='body-button bg-plain-600 toggle-control']");
 	
 	public By fullName = By.id("form-input-fullName");
 	public By organisationName = By.id("form-input-organisationName");
@@ -18,7 +18,7 @@ public class menu_Locators {
 	public By email = By.id("form-input-email");
 	
 	public By agreeRadioButton = By.id("form-input-consentAgreed-0");
-	public By submitButton = By.className("button");
+	public By submitButton = By.cssSelector("#contactMarketingPipedrive-163701 > div:nth-child(18) > div > button");
 	
 	public By errorMessage = By.xpath("//li[contains(text(),'This field is required')]");
 	
