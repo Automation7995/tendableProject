@@ -1,0 +1,40 @@
+Subject: Bug Report - Error Message Not Visible Upon Submit, Requires Form Reopening
+
+Description:
+I have identified a bug in the application where the error message is not visible immediately upon clicking the submit button. However, when the form window is reopened, the error message becomes visible. This behavior is inconsistent with user expectations and may lead to user confusion.
+
+Steps to Reproduce:
+
+1. Open the application.
+2. Navigate to the form that contains fields requiring user input.
+3. Fill in the required information but intentionally leave a field incomplete or with incorrect data.
+4. Click the "Submit" button.
+
+Expected Result:
+
+The application should display an error message immediately upon clicking the "Submit" button, indicating that there are issues with the provided data.
+Actual Result:
+
+The error message is not immediately visible upon clicking the "Submit" button.
+Instead, the form window closes or disappears, and the error message is not shown.
+
+Additional Steps:
+5. Reopen the form by navigating back to the input screen.
+
+Observe that the error message is now displayed correctly, indicating the issues with the provided data.
+Environment:
+
+Operating System: [Specify OS,Mac OS ventura]
+Browser: [Specify Browser, Google Chrome version 117]
+
+Severity and Priority:
+
+Severity: Moderate
+Priority: Medium
+
+Notes:
+
+This issue affects the user experience and may lead to confusion.
+The error message should be displayed immediately upon submitting the form to guide users in correcting their input.
+It is important to investigate and fix this issue to ensure a smoother user experience and prevent potential user errors.
+
